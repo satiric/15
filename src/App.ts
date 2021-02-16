@@ -38,6 +38,7 @@ export default class App {
             this.inputHandler.handle(field, key);
         } catch (e) {
             if (e instanceof InvalidCommand) {
+                this.printer.printField(field);
                 // ignore invalid commands
                 return;
             }
