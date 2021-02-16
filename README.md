@@ -2,7 +2,7 @@
 
 ## Install
 
-npm install
+`npm install`
 
 Dependencies:
 - babel
@@ -10,13 +10,16 @@ Dependencies:
 
 ## Run
 
-npm run-script build
-npm run-script start
+`npm run-script build`
+`npm run-script start`
 
 ## Control
 
 w - up
+
 s - down
+
 a - left
+
 d - right
 
