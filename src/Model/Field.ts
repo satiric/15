@@ -1,4 +1,4 @@
-import Cell, {DefaultCell} from "./Cell";
+import Cell from "./Cell";
 import Point, {DefaultPoint} from "./Point";
 
 export default interface Field {
@@ -20,9 +20,6 @@ export default interface Field {
 
     swap(firstCell: Cell, secondCell: Cell): void;
 }
-
-
-
 
 export class DefaultField implements Field {
 

@@ -14,10 +14,10 @@ export class ConsolePrinter implements Printer {
         const rowsCount: number = field.getRowsCount();
         let data: string = "";
 
-        for (let columnsIterator: number = 0; columnsIterator < columnsCount; columnsIterator++) {
+        for (let rowsIterator: number = 0; rowsIterator < rowsCount; rowsIterator++) {
 
-            for (let rowsIterator: number = 0; rowsIterator < rowsCount; rowsIterator++) {
-                let value: string | null = field.getCell(new DefaultPoint(columnsIterator, rowsIterator)).getValue();
+            for (let columnsIterator: number = 0; columnsIterator < columnsCount; columnsIterator++) {
+                let value: string | null = field.getCell(new DefaultPoint(rowsIterator, columnsIterator)).getValue();
                 data += (value !== null)
                     ? value
                     : "_";

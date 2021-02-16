@@ -2,6 +2,7 @@ import Field from "../../Model/Field";
 import CellsMover from "./CellsMover";
 
 export default interface Shuffler {
+
     shuffle(field: Field, strength: number): void
 }
 
@@ -13,8 +14,8 @@ export class DefaultShuffler implements Shuffler {
 
     public shuffle(field: Field, strength: number): void {
 
-        // such algorithm is pretty slow but this is guarantee game can be ended
-        // Sam Loyd's unsolvable case for 4x4 and other unsolvable cases for X x Y
+        // such algorithm is pretty slow but this is guarantee that game can be ended
+        // fix Sam Loyd's unsolvable case for 4x4 and other unsolvable cases for X x Y
 
         for (let i: number = 0; i < strength; i++) {
             let targetCell = field.findCellByValue(null);

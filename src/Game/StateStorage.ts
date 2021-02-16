@@ -3,6 +3,7 @@ import Field from "../Model/Field";
 export interface StateStorage {
 
     setField(field: Field): void;
+
     getField(): Field;
 
 }
@@ -16,7 +17,7 @@ export default class DummyStateStorage implements StateStorage {
         this.field = field;
     }
 
-    public getField(): Field|undefined {
+    public getField(): Field | undefined {
         return this.field;
     }
 }

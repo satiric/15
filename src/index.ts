@@ -1,4 +1,3 @@
-
 import App from "./App";
 import GameStarter from "./Game/GameStarter";
 import {DefaultShuffler} from "./Game/Field/Shuffler";
@@ -7,8 +6,7 @@ import DummyStateStorage from "./Game/StateStorage";
 import {ConsolePrinter} from "./Render/Printer";
 import DefaultInputHandler from "./Game/InputHandler";
 import {DefaultCellsMover} from "./Game/Field/CellsMover";
-
-let stdin = process.openStdin();
+import GameVictoryChecker from "./Game/GameVictoryChecker";
 
 function configureDI(): App {
 
@@ -20,7 +18,8 @@ function configureDI(): App {
     const gameStarter = new GameStarter(creator, shuffler);
     const stateStorage = new DummyStateStorage();
     const printer = new ConsolePrinter();
-    const inputHandler = new DefaultInputHandler();
+    const victoryChecker = new GameVictoryChecker();
+    const inputHandler = new DefaultInputHandler(cellsMover, stateStorage, victoryChecker);
     return new App(gameStarter, stateStorage, printer, inputHandler);
 }
 
@@ -28,6 +27,15 @@ function configureDI(): App {
 const app = configureDI();
 app.launch();
 
-stdin.addListener("data", (data) => {
-    app.input(data.toString())
+const readline = require('readline'), rl = readline.createInterface(process.stdin, process.stdout);
+
+
+process.stdin.on('keypress', function (s, key) {
+    app.input(key.name);
+});
+
+rl.on('close', function () {
+    console.log('End');
+    rl.close();
+    process.exit(0);
 });

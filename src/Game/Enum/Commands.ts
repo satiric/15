@@ -1,4 +1,3 @@
-
 enum Commands {
     UP = 'w',
     DOWN = 's',

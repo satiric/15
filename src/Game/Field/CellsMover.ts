@@ -13,7 +13,6 @@ export default interface CellsMover {
 
 export class DefaultCellsMover implements CellsMover {
 
-
     moveToDirection(field: Field, cell: Cell, direction: Commands) {
 
         const point: Point | undefined = field.findPointByCell(cell);
@@ -21,7 +20,6 @@ export class DefaultCellsMover implements CellsMover {
         const secondCell: Cell = field.getCell(this.getPointByDirection(direction, point));
         field.swap(cell, secondCell);
     }
-
 
     getAllowedDirections(field: Field, cell: Cell): Array<Commands> {
 
@@ -52,6 +50,7 @@ export class DefaultCellsMover implements CellsMover {
 
     private getPointByDirection(direction: Commands, point: Point): Point {
 
+        // lack of time for prettier solution
         if (direction === Commands.LEFT) {
             return new DefaultPoint(point.getRowPosition(), point.getColumnPosition() - 1);
         }
@@ -66,5 +65,4 @@ export class DefaultCellsMover implements CellsMover {
 
         return new DefaultPoint(point.getRowPosition() + 1, point.getColumnPosition());
     }
-
 }
